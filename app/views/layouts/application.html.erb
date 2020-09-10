@@ -5,26 +5,37 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
-  <body>
-    <header class="main_header">
+<body>
+  <header class="main_header clearfix">
+    <div class="wrapper">
       <div id="logo">
-        <p>Rails Forum</p>
+        <p>
+          <%= link_to "Mackenzie's Rails Forum", root_path %>
+        </p>
+      </div>
       <div id="buttons">
-        <%= link_to 'New Post', new_post_path %>
-    </header>
-
-    <div class="wrapper">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+        <% if user_signed_in? %>
+          <%= link_to "New Post", new_post_path %>
+        <% end %>
+      </div>
     </div>
-
-    <div class="wrapper">
-      <%= yield %>
-    </div>
-  </body>
+  </header>
+  <div class="wrapper">
+    <p class="notice">
+      <%= notice %>
+    </p>
+    <p class="alert">
+      <%= alert %>
+    </p>
+  </div>
+  <div class="wrapper">
+    <%= yield %>
+  </div>
+</body>
 </html>
