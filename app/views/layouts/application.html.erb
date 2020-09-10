@@ -16,12 +16,15 @@
     <div class="wrapper">
       <div id="logo">
         <p>
-          <%= link_to "Mackenzie's Rails Forum", root_path %>
+          <%= link_to "Javier Rails Forum", root_path %>
         </p>
       </div>
       <div id="buttons">
         <% if user_signed_in? %>
           <%= link_to "New Post", new_post_path %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path %>
+          <%= link_to "Sign up", new_user_registration_path %>
         <% end %>
       </div>
     </div>
